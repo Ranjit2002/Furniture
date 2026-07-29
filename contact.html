@@ -82,6 +82,7 @@
             color: #334155 !important;
         }
 
+        /* Protect elements with absolute positioning (like image overlays) */
         body.light-mode main .absolute .text-white,
         body.light-mode section .absolute .text-white,
         body.light-mode .slide .text-white {
@@ -123,7 +124,7 @@
             border-color: #cbd5e1 !important;
         }
 
-        /* Contact Form Fixes */
+        /* Contact Form Input Fixes */
         body.light-mode input,
         body.light-mode textarea,
         body.light-mode select {
@@ -135,6 +136,16 @@
         body.light-mode input::placeholder,
         body.light-mode textarea::placeholder {
             color: #94a3b8 !important;
+        }
+
+        /* NEW FIX: Specifically inverts text in the Contact Page Header without breaking Carousels! */
+        body.light-mode .contact-header .text-white {
+            color: #0f172a !important;
+        }
+
+        body.light-mode .contact-header .text-gray-400 {
+            color: #334155 !important;
+            /* Fixes the description paragraph as well */
         }
 
         /* Ambient Glow Animation */
@@ -168,6 +179,7 @@
     <nav id="navbar"
         class="fixed w-full z-50 top-0 left-0 bg-gray-950/70 backdrop-blur-xl border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)] transition-all duration-500 py-2">
         <div class="mx-auto px-6 py-2 flex justify-between items-center transition-all duration-300">
+
             <a href="index.html"
                 class="group relative z-20 flex items-center gap-2 text-2xl md:text-3xl font-black tracking-tight transition-all duration-300">
                 <span
@@ -178,28 +190,35 @@
 
             <!-- Desktop Links -->
             <div class="hidden md:flex space-x-8 lg:space-x-10 items-center">
+                <!-- INACTIVE -->
                 <a href="index.html"
-                    class="relative group text-sm font-semibold tracking-widest text-gray-400 hover:text-white transition-colors duration-300">HOME
+                    class="relative group text-sm font-semibold tracking-widest text-gray-400 hover:text-white transition-colors duration-300">
+                    HOME
                     <span
                         class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-gradient-to-r from-emerald-400 to-cyan-400 group-hover:w-full transition-all duration-300 ease-out rounded-full group-hover:shadow-[0_0_12px_rgba(52,211,153,0.6)]"></span>
                 </a>
                 <a href="about.html"
-                    class="relative group text-sm font-semibold tracking-widest text-gray-400 hover:text-white transition-colors duration-300">ABOUT
+                    class="relative group text-sm font-semibold tracking-widest text-gray-400 hover:text-white transition-colors duration-300">
+                    ABOUT
                     <span
                         class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-gradient-to-r from-emerald-400 to-cyan-400 group-hover:w-full transition-all duration-300 ease-out rounded-full group-hover:shadow-[0_0_12px_rgba(52,211,153,0.6)]"></span>
                 </a>
                 <a href="collections.html"
-                    class="relative group text-sm font-semibold tracking-widest text-gray-400 hover:text-white transition-colors duration-300">COLLECTIONS
+                    class="relative group text-sm font-semibold tracking-widest text-gray-400 hover:text-white transition-colors duration-300">
+                    COLLECTIONS
                     <span
                         class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-gradient-to-r from-emerald-400 to-cyan-400 group-hover:w-full transition-all duration-300 ease-out rounded-full group-hover:shadow-[0_0_12px_rgba(52,211,153,0.6)]"></span>
                 </a>
+
                 <!-- ACTIVE LINK -->
                 <a href="contact.html"
-                    class="relative group text-sm font-bold tracking-widest text-white transition-colors duration-300">CONTACT
+                    class="relative group text-sm font-bold tracking-widest text-white transition-colors duration-300">
+                    CONTACT
                     <span
                         class="absolute -bottom-2 left-0 w-full h-[2px] bg-gradient-to-r from-emerald-400 to-cyan-400 shadow-[0_0_12px_rgba(52,211,153,0.8)] rounded-full"></span>
                 </a>
 
+                <!-- THEME TOGGLE (DESKTOP) -->
                 <button
                     class="theme-toggle ml-4 p-2.5 rounded-full bg-white/5 border border-white/10 text-white hover:bg-white/10 hover:border-emerald-400/50 hover:shadow-[0_0_20px_rgba(52,211,153,0.3)] hover:-translate-y-0.5 transition-all duration-300 cursor-pointer">
                     <svg class="theme-toggle-dark-icon w-5 h-5 hidden" fill="none" stroke="currentColor"
@@ -215,7 +234,6 @@
                     </svg>
                 </button>
             </div>
-
             <!-- Mobile Menu Toggle Button -->
             <button id="mobile-menu-btn"
                 class="md:hidden relative z-20 text-gray-300 hover:text-white focus:outline-none p-2 transition-transform duration-300 hover:scale-110 cursor-pointer">
@@ -229,6 +247,8 @@
         <!-- Mobile Menu Dropdown -->
         <div id="mobile-menu"
             class="md:hidden absolute top-full left-0 w-full bg-gray-950/95 backdrop-blur-3xl border-b border-emerald-500/30 shadow-2xl flex flex-col items-center py-8 space-y-6">
+
+            <!-- Mobile Menu Links -->
             <a href="index.html"
                 class="text-gray-400 hover:text-white font-semibold tracking-widest text-lg transition-colors duration-300 w-full text-center">HOME</a>
             <a href="about.html"
@@ -238,6 +258,7 @@
             <a href="contact.html"
                 class="text-emerald-400 font-black tracking-widest text-xl w-full text-center drop-shadow-[0_0_8px_rgba(52,211,153,0.6)] mb-4">CONTACT</a>
 
+            <!-- THEME TOGGLE (MOBILE) -->
             <button
                 class="theme-toggle px-8 py-3 rounded-full bg-gradient-to-r from-emerald-500 to-cyan-500 text-gray-950 text-sm font-black tracking-wider shadow-[0_0_15px_rgba(52,211,153,0.4)] flex items-center justify-center gap-2 cursor-pointer w-[60%]">
                 <svg class="theme-toggle-dark-icon w-5 h-5 hidden" fill="none" stroke="currentColor"
@@ -256,8 +277,8 @@
         </div>
     </nav>
 
-    <!-- PAGE HEADER -->
-    <header class="pt-32 pb-12 relative z-10 text-center px-6">
+    <!-- PAGE HEADER - Added 'contact-header' class here! -->
+    <header class="contact-header pt-32 pb-12 relative z-10 text-center px-6">
         <h1 class="text-5xl md:text-7xl font-black mb-4 tracking-tighter text-white drop-shadow-2xl">
             Let's <span
                 class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-500">Connect.</span>
@@ -384,7 +405,7 @@
         </div>
     </main>
 
-    <!-- FOOTER -->
+    <!-- FOOTER (Matches Index) -->
     <footer class="pt-16 relative overflow-hidden">
         <div class="border-t border-white/5 py-8 relative z-10">
             <div class="max-w-7xl mx-auto px-6 text-center text-gray-600 text-xs">
@@ -393,6 +414,7 @@
         </div>
     </footer>
     <script src="script.js"></script>
+
 </body>
 
 </html>
